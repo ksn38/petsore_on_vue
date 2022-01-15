@@ -1,0 +1,19 @@
+version: "3.7"
+services:
+  node:
+    build:
+      context: ./
+      dockerfile: Dockerfile
+    image: "node14"
+    container_name: ms4-node
+    user: "node"
+    working_dir: /home/node/app
+    environment:
+      - NODE_ENV=development
+    volumes:
+      - ./:/home/node/app
+    ports:
+      - "8080:8080"
+    #stdin_open: true # docker run -i
+    tty: true        # docker run -t
+    #command: "bash"
