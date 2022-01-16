@@ -38,7 +38,7 @@
                 <strong>State:</strong>
                 <select v-model="order.state" class="form-control">
                   <option disabled value="">State</option>
-                  <option v-for="(state, key) in states" v-bind:value="state">
+                  <option v-for="(state, key) in states" v-bind:value="state" v-bind:key="key">
                   {{key}}
                   </option>
                 </select>
