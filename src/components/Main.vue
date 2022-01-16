@@ -12,8 +12,12 @@
   </main>
 </template>
 <script>
+import p from '../assets/products.json';
+console.log(p.products[1]);
+import axios from 'axios';
+
 export default {
-  name: 'HelloWorld',
+  //name: 'HelloWorld',
   data() {
     return {
       product: {
@@ -43,6 +47,12 @@ export default {
     }
 
   },
+  created: function() {
+    axios.get('products.json').then(response => {
+      this.products = response.data.products;
+      console.log(this.products[2]);
+    });
+  }
 }
 </script>
 <style scoped>
