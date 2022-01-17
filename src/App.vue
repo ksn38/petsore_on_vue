@@ -1,32 +1,35 @@
 <template>
   <div id="app">
-    <div id="nav">
-      <router-link to="/">Home</router-link> |
-      <router-link to="/about">About</router-link>
-    </div>
-    <router-view/>
+    <transition name="fade" mode="out-in">
+      <router-view></router-view>
+    </transition>
   </div>
 </template>
 
+<script>
+  export default {
+    name: 'app'
+  }
+</script>
+
 <style>
 #app {
-  font-family: Avenir, Helvetica, Arial, sans-serif;
-  -webkit-font-smoothing: antialiased;
-  -moz-osx-font-smoothing: grayscale;
-  text-align: center;
-  color: #2c3e50;
 }
 
-#nav {
-  padding: 30px;
+.fade-enter-active, .fade-leave-active {
+  transition: opacity .5s ease-out;
 }
 
-#nav a {
+.fade-enter, .fade-leave-to {
+  opacity: 0;
+}
+
+#app a {
   font-weight: bold;
   color: #2c3e50;
 }
 
-#nav a.router-link-exact-active {
+#app a.router-link-exact-active {
   color: #42b983;
 }
 </style>
