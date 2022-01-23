@@ -36,15 +36,15 @@
 </template>
 <script>
 import MyHeader from './Header.vue';
+import {mapGetters} from 'vuex';
 //import p from '../assets/products.json';
 //console.log(p.products[1]);
-import axios from 'axios';
+//import axios from 'axios';
 
 export default {
   name: 'imain',
   data() {
     return {
-      products: {},
       cart: []
     };
   },
@@ -74,6 +74,9 @@ export default {
     }
   },
   computed: {
+    ...mapGetters([
+      'products'
+    ]),
     cartItemCount() {
       return this.cart.length || '';
     },
@@ -107,10 +110,10 @@ export default {
     }
   },
   created: function() {
-    axios.get('products.json').then(response => {
-      this.products = response.data.products;
+    //axios.get('products.json').then(response => {
+      //this.products = response.data.products;
       //console.log(this.products[2]);
-    });
+    this.$store.dispatch('initStore');
   }
 }
 </script>
